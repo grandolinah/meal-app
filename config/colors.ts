@@ -5,4 +5,5 @@ export const COLORS: Colors = {
   pinkLace: '#FFC7FF',
   white: '#FFF',
   wildSand: '#F5F5F5',
+  ash: '#C6C3B5',
 };
