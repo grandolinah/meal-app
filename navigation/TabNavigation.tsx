@@ -5,25 +5,12 @@ import { createMaterialBottomTabNavigator } from '@react-navigation/material-bot
 import Icon from 'react-native-vector-icons/Ionicons';
 import { Platform } from 'react-native';
 
-import AppNavigation from './AppNavigation';
-import FavoritesScreen from '../screens/FavoritesScreen';
+import MealNavigation from './MealNavigation';
+import FavoritesNavigation from '../screens/FavoritesScreen';
 
 import { COLORS } from '../config/colors';
 
 const Tab = Platform.OS === 'android' ? createMaterialBottomTabNavigator() : createBottomTabNavigator();
-
-const iosTabOptions = {
-  activeTintColor: COLORS.violetRed,
-  inactiveTintColor: COLORS.ash,
-  keyboardHidesTabBar: true,
-  labelPosition: 'below-icon',
-};
-
-const androidTabOptions = {
-  activeColor: COLORS.violetRed,
-  inactiveColor: COLORS.ash,
-  shifting: true,
-};
 
 const screenOptions = ({ route }) => ({
   tabBarIcon: ({ focused, color, size }) => {
@@ -53,8 +40,8 @@ const TabNavigation = () => {
         labelPosition: 'below-icon',
       }}
     >
-      <Tab.Screen name="Meals" component={AppNavigation} />
-      <Tab.Screen name="Favorites" component={FavoritesScreen} />
+      <Tab.Screen name="Meals" component={MealNavigation} />
+      <Tab.Screen name="Favorites" component={FavoritesNavigation} />
     </Tab.Navigator>
   );
 
@@ -65,8 +52,8 @@ const TabNavigation = () => {
       inactiveColor={COLORS.ash}
       barStyle={{ backgroundColor: COLORS.violetRed }}
     >
-      <Tab.Screen name="Meals" component={AppNavigation} />
-      <Tab.Screen name="Favorites" component={FavoritesScreen} />
+      <Tab.Screen name="Meals" component={MealNavigation} />
+      <Tab.Screen name="Favorites" component={FavoritesNavigation} />
     </Tab.Navigator>
   );
 

@@ -11,7 +11,7 @@ import { COLORS } from '../config/colors';
 
 const Stack = createStackNavigator();
 
-const AppNavigation = ({ route }) => {
+const MealNavigation = ({ route }) => {
 
   return (
     <Stack.Navigator
@@ -52,4 +52,4 @@ const AppNavigation = ({ route }) => {
   );
 };
 
-export default AppNavigation;
+export default MealNavigation;
