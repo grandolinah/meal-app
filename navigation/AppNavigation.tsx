@@ -10,23 +10,44 @@ import { COLORS } from '../config/colors';
 
 const Stack = createStackNavigator();
 
-const AppNavigation = () => {
+const AppNavigation = ({ route }) => {
+
   return (
-    <Stack.Navigator screenOptions={{
-      headerTitle: 'Meal Categories',
-      headerTitleStyle: {
-        color: COLORS.white,
-        alignSelf: 'center',
-      },
-      headerStyle: {
-        backgroundColor:
-          Platform.OS === 'android' ? COLORS.violetRed : COLORS.pinkLace,
-      },
-      headerTintColor: Platform.OS === 'android' ? COLORS.white : COLORS.pinkLace,
-    }}>
+    <Stack.Navigator
+      screenOptions={{
+        headerTitle: 'Meal Categories',
+        headerTitleStyle: {
+          color: COLORS.white,
+          alignSelf: 'center',
+        },
+        headerStyle: {
+          backgroundColor:
+            Platform.OS === 'android' ? COLORS.violetRed : COLORS.pinkLace,
+        },
+        headerTintColor:
+          Platform.OS === 'android' ? COLORS.white : COLORS.pinkLace,
+      }}>
       <Stack.Screen name="Categories" component={CategoriesScreen} />
-      <Stack.Screen name="CategoryMeals" component={CategoryMealsScreen} />
-      <Stack.Screen name="MealDetail" component={MealDetailScreen} />
+      <Stack.Screen
+        name="CategoryMeals"
+        component={CategoryMealsScreen}
+        options={({ route }) => ({
+          headerTitle: route.params.title,
+          headerTitleStyle: {
+            alignSelf: 'center', // TODO not aligned
+          },
+        })}
+      />
+      <Stack.Screen
+        name="MealDetail"
+        component={MealDetailScreen}
+        options={({ route }) => ({
+          headerTitle: route.params.title,
+          headerTitleStyle: {
+            alignSelf: 'center', // TODO not aligned
+          },
+        })}
+      />
     </Stack.Navigator>
   );
 };

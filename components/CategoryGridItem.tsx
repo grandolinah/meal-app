@@ -8,7 +8,13 @@ import {
   TouchableNativeFeedback,
 } from 'react-native';
 
-const CategoryGridItem = (props) => {
+import { CategoryGridItemPropsInterface } from '../interfaces/category-interface';
+
+const CategoryGridItem = ({
+  onSelect,
+  color,
+  title,
+}: CategoryGridItemPropsInterface) => {
   let TouchableComponent = TouchableOpacity;
 
   if (Platform.OS === 'android' && Platform.Version >= 21) {
@@ -17,11 +23,10 @@ const CategoryGridItem = (props) => {
 
   return (
     <View style={styles.gridItem}>
-      <TouchableComponent style={styles.gridContainer} onPress={props.onSelect}>
-        <View
-          style={{ ...styles.container, ...{ backgroundColor: props.color } }}>
+      <TouchableComponent style={styles.gridContainer} onPress={onSelect}>
+        <View style={{ ...styles.container, ...{ backgroundColor: color } }}>
           <Text style={styles.title} numberOfLines={2}>
-            {props.title}
+            {title}
           </Text>
         </View>
       </TouchableComponent>
@@ -47,14 +52,16 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     shadowColor: 'black',
     shadowOpacity: 0.26,
-    shadowOffset: { width: 0, height: 2 },
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
     shadowRadius: 10,
     elevation: 3,
   },
   title: {
     padding: 15,
     textAlign: 'right',
-    fontFamily: 'open-sans-bold',
     fontSize: 20,
   },
 });

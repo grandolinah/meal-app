@@ -4,20 +4,21 @@ import { View, StyleSheet, FlatList } from 'react-native';
 import CategoryGridItem from '../components/CategoryGridItem';
 import { CATEGORIES } from '../data/dummy-data';
 
-const CategorieMealsScreen = (props) => {
-  const renderGridItem = (itemData) => {
+const CategorieMealsScreen = ({ navigation }) => {
+  const renderGridItem = ({ item }) => {
     return (
       <CategoryGridItem
-        title={itemData.item.title}
+        title={item.title}
         onSelect={() => {
-          props.navigation.navigate({
+          navigation.navigate({
             name: 'CategoryMeals',
             params: {
-              categoryId: itemData.item.id,
+              categoryId: item.id,
+              title: item.title,
             },
           });
         }}
-        color={itemData.item.color}
+        color={item.color}
       />
     );
   };
@@ -28,7 +29,7 @@ const CategorieMealsScreen = (props) => {
         numColumns={2}
         data={CATEGORIES}
         renderItem={renderGridItem}
-        keyExtractor={(item) => item.id}
+        keyExtractor={(item: any) => item.id}
       />
     </View>
   )

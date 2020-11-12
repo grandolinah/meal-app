@@ -1,29 +1,33 @@
 import React from 'react';
-
 import { View, StyleSheet, FlatList } from 'react-native';
-import { CATEGORIES, MEALS } from '../data/dummy-data';
+import { MEALS } from '../data/dummy-data';
 
 import MealItem from '../components/MealItem';
 
-const CategoryMealsScreen = (props) => {
-  const categoryId = props.route.params?.categoryId ?? 'defaultValue';
+const CategoryMealsScreen = ({ route, navigation }) => {
+  const categoryId = route.params?.categoryId ?? 'defaultValue';
 
+  // TODO interface
   const displayedMeals = MEALS.filter((meals) =>
     meals.categoryIds.indexOf(categoryId),
   );
 
-  const renderMealItem = (itemData) => {
+  const renderMealItem = ({ item }) => {
+
     return (
       <MealItem
-        data={itemData}
-        onSelectMeal={() => props.navigation.navigate('MealDetail', {
-          item: itemData.item,
+        data={item}
+        onSelectMeal={() => navigation.navigate('MealDetail', {
+          item: item,
+          params: {
+            title: item.title,
+          },
         })}
-        title={itemData.item.title}
-        duration={itemData.item.duration}
-        complexity={itemData.item.complexity}
-        image={itemData.item.imageUrl}
-        affordability={itemData.item.affordability}
+        title={item.title}
+        duration={item.duration}
+        complexity={item.complexity}
+        image={item.imageUrl}
+        affordability={item.affordability}
       />
     );
   };
@@ -32,21 +36,12 @@ const CategoryMealsScreen = (props) => {
     <View style={styles.screen}>
       <FlatList
         data={displayedMeals}
-        keyExtractor={(item) => item.id}
+        keyExtractor={(item: any) => item.id} // TODO interface
         renderItem={renderMealItem}
         style={styles.container}
       />
     </View>
   );
-};
-
-CategoryMealsScreen.navigationOptions = (navigationData) => {
-  const categoryId = navigationData.navigation.getParam('categoryId');
-  const selected = CATEGORIES.find((cat) => cat.id === categoryId);
-
-  return {
-    headerTitle: selected.title,
-  };
 };
 
 const styles = StyleSheet.create({

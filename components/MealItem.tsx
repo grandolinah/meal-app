@@ -9,26 +9,26 @@ import {
 
 import { COLORS } from '../config/colors';
 
-const MealItem = (props) => {
+import { MealItemPropsInterface } from '../interfaces/meal-interface';
+
+const MealItem = ({ onSelectMeal, image, title, duration, complexity, affordability}: MealItemPropsInterface) => {
   return (
     <View style={styles.mealItem}>
-      <TouchableOpacity onPress={props.onSelectMeal}>
+      <TouchableOpacity onPress={onSelectMeal}>
         <View style={styles.container}>
           <View View style={{ ...styles.row, ...styles.mealHeader }}>
             <ImageBackground
-              source={{ uri: props.image }}
+              source={{ uri: image }}
               style={styles.bgImage}>
               <View style={styles.titleContainer}>
-                <Text style={styles.title}>
-                  {props.title}numberOfLines={1}
-                </Text>
+                <Text style={styles.title}>{title}</Text>
               </View>
             </ImageBackground>
           </View>
           <View style={{ ...styles.row, ...styles.mealDetails }}>
-            <Text>{props.duration} min</Text>
-            <Text>{props.complexity}</Text>
-            <Text>{props.affordability}</Text>
+            <Text>{duration} min</Text>
+            <Text>{complexity}</Text>
+            <Text>{affordability}</Text>
           </View>
         </View>
       </TouchableOpacity>
@@ -43,7 +43,6 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.wildSand,
     borderRadius: 10,
     overflow: 'hidden',
-    // marginVertical: 5,
   },
   container: {},
   row: {
@@ -58,7 +57,6 @@ const styles = StyleSheet.create({
   title: {
     color: COLORS.white,
     paddingVertical: 5,
-    fontFamily: 'open-sans-bold', // TODO
     fontSize: 20,
     textAlign: 'center',
   },

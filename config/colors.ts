@@ -1,4 +1,6 @@
-export const COLORS = {
+import { Colors } from '../interfaces/color-interface';
+
+export const COLORS: Colors = {
   violetRed: '#F5428D',
   pinkLace: '#FFC7FF',
   white: '#FFF',
