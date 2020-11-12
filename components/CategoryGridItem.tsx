@@ -39,7 +39,9 @@ const styles = StyleSheet.create({
     flex: 1,
     margin: 15,
     borderRadius: 10,
-    overflow: 'hidden',
+    overflow: Platform.OS === 'android' && Platform.Version >= 21 ? 'hidden' : 'visible',
+    height: 150,
+    elevation: 5,
   },
   gridContainer: {
     flex: 1,
@@ -48,7 +50,6 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'flex-end',
     alignItems: 'flex-end',
-    height: 150,
     borderRadius: 10,
     shadowColor: 'black',
     shadowOpacity: 0.26,
@@ -57,7 +58,6 @@ const styles = StyleSheet.create({
       height: 2,
     },
     shadowRadius: 10,
-    elevation: 3,
   },
   title: {
     padding: 15,
