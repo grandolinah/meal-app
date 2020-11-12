@@ -5,6 +5,7 @@ import { Platform } from 'react-native';
 import CategoriesScreen from '../screens/CategoriesScreen';
 import CategoryMealsScreen from '../screens/CategoryMealsScreen';
 import MealDetailScreen from '../screens/MealDetailScreen';
+import CustomHeaderButton from '../components/CustomHeaderButton';
 
 import { COLORS } from '../config/colors';
 
@@ -18,8 +19,8 @@ const AppNavigation = ({ route }) => {
         headerTitle: 'Meal Categories',
         headerTitleStyle: {
           color: COLORS.white,
-          alignSelf: 'center',
         },
+        headerTitleAlign: 'center',
         headerStyle: {
           backgroundColor:
             Platform.OS === 'android' ? COLORS.violetRed : COLORS.pinkLace,
@@ -33,19 +34,18 @@ const AppNavigation = ({ route }) => {
         component={CategoryMealsScreen}
         options={({ route }) => ({
           headerTitle: route.params.title,
-          headerTitleStyle: {
-            alignSelf: 'center', // TODO not aligned
-          },
+          headerTitleAlign: 'center',
         })}
       />
       <Stack.Screen
         name="MealDetail"
         component={MealDetailScreen}
         options={({ route }) => ({
-          headerTitle: route.params.title,
-          headerTitleStyle: {
-            alignSelf: 'center', // TODO not aligned
-          },
+          headerTitle: route.params.item.title,
+          headerTitleAlign: 'center',
+          headerRight: () => (
+            <CustomHeaderButton onPress={() => {}} title={'meow'} />
+          ),
         })}
       />
     </Stack.Navigator>
