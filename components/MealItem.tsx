@@ -39,10 +39,13 @@ const MealItem = ({ onSelectMeal, image, title, duration, complexity, affordabil
 const styles = StyleSheet.create({
   mealItem: {
     height: 200,
-    width: '100%',
+    width: '95%',
+    alignSelf: 'center',
     backgroundColor: COLORS.wildSand,
     borderRadius: 10,
     overflow: 'hidden',
+    marginVertical: 10,
+    elevation: 5
   },
   container: {},
   row: {
