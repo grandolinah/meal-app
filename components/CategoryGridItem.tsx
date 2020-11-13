@@ -1,7 +1,6 @@
 import React from 'react';
 import {
   View,
-  Text,
   StyleSheet,
   TouchableOpacity,
   Platform,
@@ -9,6 +8,8 @@ import {
 } from 'react-native';
 
 import { CategoryGridItemPropsInterface } from '../interfaces/category-interface';
+
+import DefaultBoldText from './DefaultBoldText';
 
 const CategoryGridItem = ({
   onSelect,
@@ -25,9 +26,9 @@ const CategoryGridItem = ({
     <View style={styles.gridItem}>
       <TouchableComponent style={styles.gridContainer} onPress={onSelect}>
         <View style={{ ...styles.container, ...{ backgroundColor: color } }}>
-          <Text style={styles.title} numberOfLines={2}>
+          <DefaultBoldText style={styles.title} numberOfLines={2}>
             {title}
-          </Text>
+          </DefaultBoldText>
         </View>
       </TouchableComponent>
     </View>

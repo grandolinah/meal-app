@@ -1,15 +1,17 @@
 import React from 'react';
 import {
   View,
-  Text,
   StyleSheet,
   TouchableOpacity,
   ImageBackground,
 } from 'react-native';
 
-import { COLORS } from '../config/colors';
-
 import { MealItemPropsInterface } from '../interfaces/meal-interface';
+
+import DefaultBoldText from './DefaultBoldText';
+import DefaultText from './DefaultText';
+
+import { COLORS } from '../config/colors';
 
 const MealItem = ({ onSelectMeal, image, title, duration, complexity, affordability}: MealItemPropsInterface) => {
   return (
@@ -21,14 +23,14 @@ const MealItem = ({ onSelectMeal, image, title, duration, complexity, affordabil
               source={{ uri: image }}
               style={styles.bgImage}>
               <View style={styles.titleContainer}>
-                <Text style={styles.title}>{title}</Text>
+                <DefaultBoldText style={styles.title}>{title}</DefaultBoldText>
               </View>
             </ImageBackground>
           </View>
           <View style={{ ...styles.row, ...styles.mealDetails }}>
-            <Text>{duration} min</Text>
-            <Text>{complexity}</Text>
-            <Text>{affordability}</Text>
+            <DefaultText>{duration} min</DefaultText>
+            <DefaultText>{complexity}</DefaultText>
+            <DefaultText>{affordability}</DefaultText>
           </View>
         </View>
       </TouchableOpacity>

@@ -85,6 +85,7 @@ const MealNavigation = ({ route, navigation }) => {
         headerTitle: 'Meal Categories',
         headerTitleStyle: {
           color: COLORS.white,
+          fontFamily: 'Montserrat-Bold',
         },
         headerTitleAlign: 'center',
         headerStyle: {

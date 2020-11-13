@@ -41,10 +41,6 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
   },
-  text: {
-    marginVertical: 10,
-    alignSelf: 'center',
-  },
 });
 
 export default CategorieMealsScreen;

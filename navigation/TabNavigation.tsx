@@ -2,7 +2,7 @@ import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import Icon from 'react-native-vector-icons/Ionicons';
-import { Platform } from 'react-native';
+import { Platform, Text } from 'react-native';
 
 import MealNavigation from './MealNavigation';
 import FavoritesNavigation from '../navigation/FavoritesNavigation';
@@ -23,7 +23,14 @@ const screenOptions = ({ route }) => ({
       iconName = focused ? 'ios-star' : 'ios-star-outline';
     }
 
-    return <Icon name={iconName} size={size} color={color} />;
+    return (
+      <Text
+        style={{
+          fontFamily: 'Montserrat-Bold' }}
+      >
+        <Icon name={iconName} size={size} color={color} />
+      </Text>
+    );
   },
 });
 
@@ -36,6 +43,9 @@ const TabNavigation = () => {
         inactiveTintColor: COLORS.ash,
         keyboardHidesTabBar: true,
         labelPosition: 'below-icon',
+        labelStyle: {
+          fontFamily: 'Montserrat-Bold',
+        }
       }}
     >
       <Tab.Screen name="Meals" component={MealNavigation} />
@@ -49,6 +59,7 @@ const TabNavigation = () => {
       activeColor={COLORS.white}
       inactiveColor={COLORS.ash}
       barStyle={{ backgroundColor: COLORS.violetRed }}
+      shifting={true}
     >
       <Tab.Screen name="Meals" component={MealNavigation} options={{ headerShown: false }} />
       <Tab.Screen name="Favorites" component={FavoritesNavigation} />

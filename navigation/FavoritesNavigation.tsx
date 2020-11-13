@@ -19,6 +19,7 @@ const FavoritesNavigation = ({ route, navigation }) => {
         headerTitle: 'Favorites',
         headerTitleStyle: {
           color: COLORS.white,
+          fontFamily: 'Montserrat-Bold',
         },
         headerTitleAlign: 'center',
         headerStyle: {
