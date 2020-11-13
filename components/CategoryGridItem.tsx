@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
   title: {
     padding: 15,
     textAlign: 'right',
-    fontSize: 20,
+    fontSize: 18,
   },
 });
 
