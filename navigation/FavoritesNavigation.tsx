@@ -5,15 +5,18 @@ import { Platform } from 'react-native';
 import FavoritesScreen from '../screens/FavoritesScreen';
 import MealDetailScreen from '../screens/MealDetailScreen';
 
+import CustomHeaderButton from '../components/CustomHeaderButton';
+import CustomMenuButton from '../components/CustomMenuButton';
+
 import { COLORS } from '../config/colors';
 
 const Stack = createStackNavigator();
 
-const FavoritesNavigation = () => {
+const FavoritesNavigation = ({ route, navigation }) => {
   return (
     <Stack.Navigator
       screenOptions={{
-        headerTitle: 'Favorites Categories',
+        headerTitle: 'Favorites',
         headerTitleStyle: {
           color: COLORS.white,
         },
@@ -25,8 +28,35 @@ const FavoritesNavigation = () => {
         headerTintColor:
           Platform.OS === 'android' ? COLORS.white : COLORS.pinkLace,
       }}>
-      <Stack.Screen name="Favorites" component={FavoritesScreen} />
-      <Stack.Screen name="MealDetails" component={MealDetailScreen} />
+      <Stack.Screen
+        name="Favorites"
+        component={FavoritesScreen}
+        options={() => ({
+          headerLeft: () => (
+            <CustomMenuButton
+              onPressed={() => {
+                navigation.toggleDrawer();
+              }}
+            />
+          ),
+        })}
+      />
+      <Stack.Screen
+        name="MealDetail"
+        component={MealDetailScreen}
+        options={({ route }) => ({
+          headerTitle: route.params.item.title,
+          headerTitleAlign: 'center',
+          headerRight: () => (
+            <CustomHeaderButton
+              onPressed={() => {
+                // addToFavorites(route.params.item.id);
+                // TODO
+              }}
+            />
+          ),
+        })}
+      />
     </Stack.Navigator>
   );
 };

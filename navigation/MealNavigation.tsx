@@ -2,10 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import { Platform, Alert } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+
 import CategoriesScreen from '../screens/CategoriesScreen';
 import CategoryMealsScreen from '../screens/CategoryMealsScreen';
 import MealDetailScreen from '../screens/MealDetailScreen';
+
 import CustomHeaderButton from '../components/CustomHeaderButton';
+import CustomMenuButton from '../components/CustomMenuButton';
 
 import { COLORS } from '../config/colors';
 
@@ -13,12 +16,12 @@ const STORAGE_KEY_FAVORITES = '@favorites';
 
 const Stack = createStackNavigator();
 
-const MealNavigation = ({ route }) => {
+const MealNavigation = ({ route, navigation }) => {
   const [fav, setFav] = useState<any[]>([]);
 
   console.log(fav);
   const addToFavorites = (id: string): void => {
-    let isAlreadyFav = fav.filter(item => item.value === id);
+    let isAlreadyFav = fav.filter((item) => item.value === id);
     // console.log(isAlreadyFav);
     if (isAlreadyFav.length === 0) {
       setFav((currentFavs: any[]) => [
@@ -32,9 +35,7 @@ const MealNavigation = ({ route }) => {
 
   const removeFav = (id: string): void => {
     setFav((currentFavs: any[]) => {
-      return currentFavs.filter(
-        (item) => item.value !== id,
-      );
+      return currentFavs.filter((item) => item.value !== id);
     });
 
     removeItem(id);
@@ -93,7 +94,19 @@ const MealNavigation = ({ route }) => {
         headerTintColor:
           Platform.OS === 'android' ? COLORS.white : COLORS.pinkLace,
       }}>
-      <Stack.Screen name="Categories" component={CategoriesScreen} />
+      <Stack.Screen
+        name="Categories"
+        component={CategoriesScreen}
+        options={() => ({
+          headerLeft: () => (
+            <CustomMenuButton
+              onPressed={() => {
+                navigation.toggleDrawer();
+              }}
+            />
+          ),
+        })}
+      />
       <Stack.Screen
         name="CategoryMeals"
         component={CategoryMealsScreen}

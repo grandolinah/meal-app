@@ -1,12 +1,11 @@
 import React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { Platform } from 'react-native';
 
 import MealNavigation from './MealNavigation';
-import FavoritesNavigation from '../screens/FavoritesScreen';
+import FavoritesNavigation from '../navigation/FavoritesNavigation';
 
 import { COLORS } from '../config/colors';
 
@@ -51,16 +50,12 @@ const TabNavigation = () => {
       inactiveColor={COLORS.ash}
       barStyle={{ backgroundColor: COLORS.violetRed }}
     >
-      <Tab.Screen name="Meals" component={MealNavigation} />
+      <Tab.Screen name="Meals" component={MealNavigation} options={{ headerShown: false }} />
       <Tab.Screen name="Favorites" component={FavoritesNavigation} />
     </Tab.Navigator>
   );
 
-  return (
-    <NavigationContainer>
-      {Platform.OS === 'android' ? androidTabNavigator : iosTabNavigator}
-    </NavigationContainer>
-  );
+  return Platform.OS === 'android' ? androidTabNavigator : iosTabNavigator;
 };
 
 export default TabNavigation;
