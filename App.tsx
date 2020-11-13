@@ -4,7 +4,7 @@ import { StatusBar } from 'react-native';
 
 import TabNavigation from './navigation/TabNavigation';
 
-const App: () => React$Node = () => {
+const App: () => React.ReactNode = () => {
   return (
     <>
       <StatusBar barStyle="dark-content" />

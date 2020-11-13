@@ -6,6 +6,7 @@ export interface MealItemPropsInterface {
   duration: string;
   complexity: string;
   affordability: string;
+  id?: string;
 }
 
 export interface MealItemDataInterface {

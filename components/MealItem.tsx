@@ -16,7 +16,7 @@ const MealItem = ({ onSelectMeal, image, title, duration, complexity, affordabil
     <View style={styles.mealItem}>
       <TouchableOpacity onPress={onSelectMeal}>
         <View style={styles.container}>
-          <View View style={{ ...styles.row, ...styles.mealHeader }}>
+          <View style={{ ...styles.row, ...styles.mealHeader }}>
             <ImageBackground
               source={{ uri: image }}
               style={styles.bgImage}>

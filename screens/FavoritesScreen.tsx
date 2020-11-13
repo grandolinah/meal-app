@@ -1,18 +1,20 @@
 import React from 'react';
-import { MEALS } from '../data/dummy-data';
+import { View, Text, FlatList, StyleSheet } from 'react-native';
 
+import { MEALS } from '../data/dummy-data';
 import MealList from '../components/MealList';
 
-const FavoritesScreen = ({ route, navigation }) => {
-  const categoryId = route.params?.categoryId ?? 'defaultValue';
+const FavoritesScreen = ({ navigation }) => {
+  let list = ['m1']; // TODO dummy
 
-  // TODO favroites screen
   const displayedMeals = MEALS.filter((meals) =>
-    meals.categoryIds.indexOf(categoryId),
+    meals.id === list[0],
   );
 
   return (
-    <MealList list={displayedMeals} />
+    <View style={styles.list}>
+      <MealList navigation={navigation} list={displayedMeals} />
+    </View>
   );
 };
 

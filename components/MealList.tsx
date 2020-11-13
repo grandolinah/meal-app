@@ -2,6 +2,7 @@ import React from 'react';
 import { View, StyleSheet, FlatList } from 'react-native';
 
 import MealItem from './MealItem';
+
 // TODo inteface
 const MealList = (props) => {
   const renderMealItem = ({ item }) => {
@@ -24,7 +25,7 @@ const MealList = (props) => {
   };
 
   return (
-    <View style={styles.lis}>
+    <View style={styles.list}>
       <FlatList
         data={props.list}
         keyExtractor={(item: any) => item.id} // TODO interface
@@ -36,7 +37,7 @@ const MealList = (props) => {
 };
 
 const styles = StyleSheet.create({
-  lis: {
+  list: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',

@@ -1,13 +1,13 @@
 import React from 'react';
 import { View, Text, StyleSheet, Button } from 'react-native';
+import { MEALS } from '../data/dummy-data';
 
 const MealDetailScreen = ({ navigation, route }) => {
-  const item = route.params;
-  console.log(item);
+  const item = route.params.item;
 
   return (
     <View style={styles.screen}>
-      <Text>The Meal Detail Screen!</Text>
+      <Text>{item.title}</Text>
       <Button
         title="go to home screen"
         onPress={() => {

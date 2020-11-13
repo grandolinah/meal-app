@@ -5,7 +5,9 @@ import { COLORS } from '../config/colors';
 
 const CustomHeaderButton = (props) => {
   return <View style={styles.container}>
-    <TouchableOpacity onPress={() => props.onPress}>
+    <TouchableOpacity onPress={() => {
+      props.onPressed(props.id);
+    }}>
       <Icon name="ios-star" size={30} color={Platform.OS === 'android' ? COLORS.white : COLORS.violetRed} />
     </TouchableOpacity>
   </View>;
