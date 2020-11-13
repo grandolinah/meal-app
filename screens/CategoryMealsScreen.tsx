@@ -12,7 +12,7 @@ const CategoryMealsScreen = ({ route, navigation }) => {
   );
 
   return (
-    <MealList list={displayedMeals} />
+    <MealList list={displayedMeals} navigation={navigation}/>
   );
 };
 

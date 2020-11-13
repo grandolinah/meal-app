@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
@@ -29,7 +29,6 @@ const screenOptions = ({ route }) => ({
 });
 
 const TabNavigation = () => {
-
   const iosTabNavigator = (
     <Tab.Navigator
       screenOptions={screenOptions}

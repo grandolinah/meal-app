@@ -12,7 +12,7 @@ const FavoritesScreen = ({ navigation }) => {
   );
 
   return (
-    <View style={styles.list}>
+    <View style={{ flex: 1, }}>
       <MealList navigation={navigation} list={displayedMeals} />
     </View>
   );
