@@ -7,8 +7,8 @@ import CategoriesScreen from '../screens/CategoriesScreen';
 import CategoryMealsScreen from '../screens/CategoryMealsScreen';
 import MealDetailScreen from '../screens/MealDetailScreen';
 
-import CustomHeaderButton from '../components/CustomHeaderButton';
-import CustomMenuButton from '../components/CustomMenuButton';
+import CustomStarButton from '../components/CustomStarButton';
+import CustomIconButton from '../components/CustomIconButton';
 
 import { COLORS } from '../config/colors';
 
@@ -22,7 +22,8 @@ const MealNavigation = ({ route, navigation }) => {
   console.log(fav);
   const addToFavorites = (id: string): void => {
     let isAlreadyFav = fav.filter((item) => item.value === id);
-    // console.log(isAlreadyFav);
+
+    console.log(isAlreadyFav);
     if (isAlreadyFav.length === 0) {
       setFav((currentFavs: any[]) => [
         ...currentFavs,
@@ -100,7 +101,8 @@ const MealNavigation = ({ route, navigation }) => {
         component={CategoriesScreen}
         options={() => ({
           headerLeft: () => (
-            <CustomMenuButton
+            <CustomIconButton
+              icon="ios-menu"
               onPressed={() => {
                 navigation.toggleDrawer();
               }}
@@ -123,7 +125,7 @@ const MealNavigation = ({ route, navigation }) => {
           headerTitle: route.params.item.title,
           headerTitleAlign: 'center',
           headerRight: () => (
-            <CustomHeaderButton
+            <CustomStarButton
               onPressed={() => {
                 addToFavorites(route.params.item.id);
               }}

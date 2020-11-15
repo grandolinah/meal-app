@@ -5,8 +5,8 @@ import { Platform } from 'react-native';
 import FavoritesScreen from '../screens/FavoritesScreen';
 import MealDetailScreen from '../screens/MealDetailScreen';
 
-import CustomHeaderButton from '../components/CustomHeaderButton';
-import CustomMenuButton from '../components/CustomMenuButton';
+import CustomIconButton from '../components/CustomIconButton';
+import CustomStarButton from '../components/CustomStarButton';
 
 import { COLORS } from '../config/colors';
 
@@ -34,7 +34,8 @@ const FavoritesNavigation = ({ route, navigation }) => {
         component={FavoritesScreen}
         options={() => ({
           headerLeft: () => (
-            <CustomMenuButton
+            <CustomIconButton
+              icon="ios-menu"
               onPressed={() => {
                 navigation.toggleDrawer();
               }}
@@ -49,7 +50,7 @@ const FavoritesNavigation = ({ route, navigation }) => {
           headerTitle: route.params.item.title,
           headerTitleAlign: 'center',
           headerRight: () => (
-            <CustomHeaderButton
+            <CustomStarButton
               onPressed={() => {
                 // addToFavorites(route.params.item.id);
                 // TODO
