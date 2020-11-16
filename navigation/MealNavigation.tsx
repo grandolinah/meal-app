@@ -3,9 +3,9 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { Platform, Alert } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-import CategoriesScreen from '../screens/CategoriesScreen';
-import CategoryMealsScreen from '../screens/CategoryMealsScreen';
-import MealDetailScreen from '../screens/MealDetailScreen';
+import CategoriesScreen from '../pages/CategoriesScreen';
+import CategoryMealsScreen from '../pages/CategoryMealsScreen';
+import MealDetailScreen from '../pages/MealDetailScreen';
 
 import CustomStarButton from '../components/CustomStarButton';
 import CustomIconButton from '../components/CustomIconButton';

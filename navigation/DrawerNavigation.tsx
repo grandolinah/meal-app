@@ -2,18 +2,17 @@ import React from 'react';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { Platform } from 'react-native';
 
-import FilterScreen from '../screens/FilterScreen';
+import FilterScreen from '../pages/FilterScreen';
 
 import TabNavigation from '../navigation/TabNavigation';
-
-import CustomIconButton from '../components/CustomIconButton';
 
 import { COLORS } from '../config/colors';
 
 const Drawer = createDrawerNavigator();
 
-const DrawerNavigation = (props) => {
-  console.log(props);
+const DrawerNavigation = () => {
+  console.log();
+
   return (
     <Drawer.Navigator initialRouteName="Home" screenOptions={{
       headerTitle: 'Favorites',

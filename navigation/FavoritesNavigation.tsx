@@ -2,8 +2,8 @@ import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import { Platform } from 'react-native';
 
-import FavoritesScreen from '../screens/FavoritesScreen';
-import MealDetailScreen from '../screens/MealDetailScreen';
+import FavoritesScreen from '../pages/FavoritesScreen';
+import MealDetailScreen from '../pages/MealDetailScreen';
 
 import CustomIconButton from '../components/CustomIconButton';
 import CustomStarButton from '../components/CustomStarButton';
