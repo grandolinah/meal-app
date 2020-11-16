@@ -7,7 +7,6 @@ import CategoriesScreen from '../pages/CategoriesScreen';
 import CategoryMealsScreen from '../pages/CategoryMealsScreen';
 import MealDetailScreen from '../pages/MealDetailScreen';
 
-import CustomStarButton from '../components/CustomStarButton';
 import CustomIconButton from '../components/CustomIconButton';
 
 import { COLORS } from '../config/colors';
@@ -125,10 +124,11 @@ const MealNavigation = ({ route, navigation }) => {
           headerTitle: route.params.item.title,
           headerTitleAlign: 'center',
           headerRight: () => (
-            <CustomStarButton
+            <CustomIconButton
               onPressed={() => {
                 addToFavorites(route.params.item.id);
               }}
+              icon="ios-star"
             />
           ),
         })}

@@ -6,7 +6,6 @@ import FavoritesScreen from '../pages/FavoritesScreen';
 import MealDetailScreen from '../pages/MealDetailScreen';
 
 import CustomIconButton from '../components/CustomIconButton';
-import CustomStarButton from '../components/CustomStarButton';
 
 import { COLORS } from '../config/colors';
 
@@ -50,11 +49,13 @@ const FavoritesNavigation = ({ route, navigation }) => {
           headerTitle: route.params.item.title,
           headerTitleAlign: 'center',
           headerRight: () => (
-            <CustomStarButton
+            <CustomIconButton
               onPressed={() => {
+                console.log(route.params.item.id)
                 // addToFavorites(route.params.item.id);
                 // TODO
               }}
+              icon="ios-star"
             />
           ),
         })}
