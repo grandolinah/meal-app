@@ -16,10 +16,12 @@ const CategoryGridItem = ({
   color,
   title,
 }: CategoryGridItemPropsInterface) => {
-  let TouchableComponent = TouchableOpacity;
+  let TouchableComponent: any; // TODO interface
 
   if (Platform.OS === 'android' && Platform.Version >= 21) {
     TouchableComponent = TouchableNativeFeedback;
+  } else {
+    TouchableComponent = TouchableOpacity;
   }
 
   return (
@@ -40,7 +42,10 @@ const styles = StyleSheet.create({
     flex: 1,
     margin: 15,
     borderRadius: 10,
-    overflow: Platform.OS === 'android' && Platform.Version >= 21 ? 'hidden' : 'visible',
+    overflow:
+      Platform.OS === 'android' && Platform.Version >= 21
+        ? 'hidden'
+        : 'visible',
     height: 150,
     elevation: 5,
   },

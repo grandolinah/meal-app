@@ -19,10 +19,19 @@ const FilterScreen = () => {
 
   const storeData = async () => {
     try {
-      await AsyncStorage.setItem(STORAGE_KEY_IS_GLUTEN_FREE, JSON.stringify(isGlutenFree));
-      await AsyncStorage.setItem(STORAGE_KEY_IS_LACTOSE_FREE, JSON.stringify(isLactoseFree));
+      await AsyncStorage.setItem(
+        STORAGE_KEY_IS_GLUTEN_FREE,
+        JSON.stringify(isGlutenFree),
+      );
+      await AsyncStorage.setItem(
+        STORAGE_KEY_IS_LACTOSE_FREE,
+        JSON.stringify(isLactoseFree),
+      );
       await AsyncStorage.setItem(STORAGE_KEY_IS_VEGAN, JSON.stringify(isVegan));
-      await AsyncStorage.setItem(STORAGE_KEY_IS_VEGETARIAN, JSON.stringify(isVegetarian));
+      await AsyncStorage.setItem(
+        STORAGE_KEY_IS_VEGETARIAN,
+        JSON.stringify(isVegetarian),
+      );
     } catch (error) {
       Alert.alert('Error', 'The app was unable to store filter.');
     }

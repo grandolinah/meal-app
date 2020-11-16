@@ -3,13 +3,12 @@ import { View, StyleSheet, FlatList } from 'react-native';
 
 import MealItem from './MealItem';
 
-// TODo inteface
-const MealList = (props) => {
+const MealList = ({ navigation, list}) => {
   const renderMealItem = ({ item }) => {
     return (
       <MealItem
         data={item}
-        onSelectMeal={() => props.navigation.navigate('MealDetail', {
+        onSelectMeal={() => navigation.navigate('MealDetail', {
           item: item,
           params: {
             title: item.title,
@@ -27,7 +26,7 @@ const MealList = (props) => {
   return (
     <View style={styles.list}>
       <FlatList
-        data={props.list}
+        data={list}
         keyExtractor={(item: any) => item.id} // TODO interface
         renderItem={renderMealItem}
         style={styles.container}

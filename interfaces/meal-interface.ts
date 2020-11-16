@@ -21,3 +21,24 @@ export interface MealItemInterface {
   complexity: string;
   affordability: string;
 }
+
+export interface MealInterface {
+  id: string;
+  categoryIds: string[];
+  title: string;
+  affordability: string;
+  complexity: string;
+  imageUrl: string;
+  duration: number;
+  ingredients: string[];
+  steps: string[];
+  isGlutenFree: boolean;
+  isVegan: boolean;
+  isVegetarian: boolean;
+  isLactoseFree: boolean;
+}
+
+export interface MealListInterface {
+  navigation: any;
+  list: MealInterface[];
+}

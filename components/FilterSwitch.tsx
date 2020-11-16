@@ -3,16 +3,21 @@ import { View, StyleSheet, Switch, Platform } from 'react-native';
 
 import DefaultText from '../components/DefaultText';
 
+import { FilterSwitchInterface } from '../interfaces/components-interface';
+
 import { COLORS } from '../config/colors';
 
-// TODO interface
-const FilterSwitch = (props) => {
+const FilterSwitch = ({
+  title,
+  value,
+  onValueChange,
+}: FilterSwitchInterface) => {
   return (
     <View style={styles.filterContainer}>
-      <DefaultText style={styles.filterName}>{props.title}</DefaultText>
+      <DefaultText style={styles.filterName}>{title}</DefaultText>
       <Switch
-        value={props.value}
-        onValueChange={(newValue) => props.onValueChange(newValue)}
+        value={value}
+        onValueChange={(newValue) => onValueChange(newValue)}
         trackColor={{ true: COLORS.violetRed }}
         thumbColor={Platform.OS === 'android' ? COLORS.violetRed : ''}
       />

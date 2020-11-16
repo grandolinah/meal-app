@@ -15,6 +15,7 @@ const STORAGE_KEY_FAVORITES = '@favorites';
 
 const Stack = createStackNavigator();
 
+// TODO types
 const MealNavigation = ({ route, navigation }) => {
   const [fav, setFav] = useState<any[]>([]);
 

@@ -9,11 +9,10 @@ import { COLORS } from '../config/colors';
 const MealDetailScreen = ({ route }) => {
   const item = route.params.item;
 
-  // TODO interfaces
-  const ListItem = (props) => {
+  const ListItem = ({ style, children}) => {
     return (
-      <View style={{ ...props.style }}>
-        <DefaultText style={{ ...props.style }}>{props.children}</DefaultText>
+      <View style={{ ...style }}>
+        <DefaultText>{children}</DefaultText>
       </View>
     )
   };

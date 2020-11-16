@@ -4,7 +4,7 @@ import { View, StyleSheet, TouchableOpacity, Platform } from 'react-native';
 
 import { COLORS } from '../config/colors';
 
-import {CustomIconButtonInterface} from '../interfaces/custom-icon-button-interface';
+import { CustomIconButtonInterface } from '../interfaces/components-interface';
 
 const CustomIconButton = ({ onPressed, icon }: CustomIconButtonInterface) => {
   return (

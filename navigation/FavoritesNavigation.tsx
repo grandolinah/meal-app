@@ -11,7 +11,8 @@ import { COLORS } from '../config/colors';
 
 const Stack = createStackNavigator();
 
-const FavoritesNavigation = ({ route, navigation }) => {
+// TODO types
+const FavoritesNavigation = ({ navigation }) => {
   return (
     <Stack.Navigator
       screenOptions={{
@@ -51,7 +52,7 @@ const FavoritesNavigation = ({ route, navigation }) => {
           headerRight: () => (
             <CustomIconButton
               onPressed={() => {
-                console.log(route.params.item.id)
+                console.log(route.params.item.id);
                 // addToFavorites(route.params.item.id);
                 // TODO
               }}

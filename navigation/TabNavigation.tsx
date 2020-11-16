@@ -26,7 +26,8 @@ const screenOptions = ({ route }) => ({
     return (
       <Text
         style={{
-          fontFamily: 'Montserrat-Bold' }}
+          fontFamily: 'Montserrat-Bold'
+        }}
       >
         <Icon name={iconName} size={size} color={color} />
       </Text>

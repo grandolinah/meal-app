@@ -13,15 +13,20 @@ import DefaultText from './DefaultText';
 
 import { COLORS } from '../config/colors';
 
-const MealItem = ({ onSelectMeal, image, title, duration, complexity, affordability}: MealItemPropsInterface) => {
+const MealItem = ({
+  onSelectMeal,
+  image,
+  title,
+  duration,
+  complexity,
+  affordability,
+}: MealItemPropsInterface) => {
   return (
     <View style={styles.mealItem}>
       <TouchableOpacity onPress={onSelectMeal}>
         <View style={styles.container}>
           <View style={{ ...styles.row, ...styles.mealHeader }}>
-            <ImageBackground
-              source={{ uri: image }}
-              style={styles.bgImage}>
+            <ImageBackground source={{ uri: image }} style={styles.bgImage}>
               <View style={styles.titleContainer}>
                 <DefaultBoldText style={styles.title}>{title}</DefaultBoldText>
               </View>
@@ -47,7 +52,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     overflow: 'hidden',
     marginVertical: 10,
-    elevation: 5
+    elevation: 5,
   },
   container: {},
   row: {
