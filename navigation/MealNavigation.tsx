@@ -13,9 +13,21 @@ import { COLORS } from '../config/colors';
 
 const STORAGE_KEY_FAVORITES = '@favorites';
 
-const Stack = createStackNavigator();
+type MealNavigationParamList = {
+  CategoryMeals: {
+    title: string
+  };
+  Categories: {};
+  MealDetail: {
+    item: {
+      title: string;
+      id: string;
+    }
+  }
+};
 
-// TODO types
+const Stack = createStackNavigator<MealNavigationParamList>();
+
 const MealNavigation = ({ route, navigation }) => {
   const [fav, setFav] = useState<any[]>([]);
 

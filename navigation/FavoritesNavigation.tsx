@@ -9,9 +9,17 @@ import CustomIconButton from '../components/CustomIconButton';
 
 import { COLORS } from '../config/colors';
 
-const Stack = createStackNavigator();
+type FavoritesNavigationParamList = {
+  MealDetail: { 
+    item: {
+      title: string;
+    }
+  };
+  Favorites: {}
+};
 
-// TODO types
+const Stack = createStackNavigator<FavoritesNavigationParamList>();
+
 const FavoritesNavigation = ({ navigation }) => {
   return (
     <Stack.Navigator
@@ -52,7 +60,7 @@ const FavoritesNavigation = ({ navigation }) => {
           headerRight: () => (
             <CustomIconButton
               onPressed={() => {
-                console.log(route.params.item.id);
+                console.log(route.params.item.id)
                 // addToFavorites(route.params.item.id);
                 // TODO
               }}

@@ -9,16 +9,20 @@ import FavoritesNavigation from '../navigation/FavoritesNavigation';
 
 import { COLORS } from '../config/colors';
 
-const Tab = Platform.OS === 'android' ? createMaterialBottomTabNavigator() : createBottomTabNavigator();
+let Tab;
+
+if (Platform.OS === 'android') {
+  Tab = createMaterialBottomTabNavigator();
+} else {
+  Tab = createBottomTabNavigator();
+}
 
 const screenOptions = ({ route }) => ({
   tabBarIcon: ({ focused, color, size }) => {
     let iconName: string;
 
     if (route.name === 'Meals') {
-      iconName = focused
-        ? 'ios-restaurant'
-        : 'ios-restaurant-outline';
+      iconName = focused ? 'ios-restaurant' : 'ios-restaurant-outline';
     } else if (route.name === 'Favorites') {
       iconName = focused ? 'ios-star' : 'ios-star-outline';
     }
@@ -26,9 +30,8 @@ const screenOptions = ({ route }) => ({
     return (
       <Text
         style={{
-          fontFamily: 'Montserrat-Bold'
-        }}
-      >
+          fontFamily: 'Montserrat-Bold',
+        }}>
         <Icon name={iconName} size={size} color={color} />
       </Text>
     );
@@ -46,9 +49,8 @@ const TabNavigation = () => {
         labelPosition: 'below-icon',
         labelStyle: {
           fontFamily: 'Montserrat-Bold',
-        }
-      }}
-    >
+        },
+      }}>
       <Tab.Screen name="Meals" component={MealNavigation} />
       <Tab.Screen name="Favorites" component={FavoritesNavigation} />
     </Tab.Navigator>
@@ -60,9 +62,12 @@ const TabNavigation = () => {
       activeColor={COLORS.white}
       inactiveColor={COLORS.ash}
       barStyle={{ backgroundColor: COLORS.violetRed }}
-      shifting={true}
-    >
-      <Tab.Screen name="Meals" component={MealNavigation} options={{ headerShown: false }} />
+      shifting={true}>
+      <Tab.Screen
+        name="Meals"
+        component={MealNavigation}
+        options={{ headerShown: false }}
+      />
       <Tab.Screen name="Favorites" component={FavoritesNavigation} />
     </Tab.Navigator>
   );
