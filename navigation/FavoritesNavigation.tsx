@@ -13,6 +13,7 @@ type FavoritesNavigationParamList = {
   MealDetail: { 
     item: {
       title: string;
+      id: string;
     }
   };
   Favorites: {}

@@ -30,7 +30,7 @@ const Stack = createStackNavigator<MealNavigationParamList>();
 
 const MealNavigation = ({ route, navigation }) => {
   const [fav, setFav] = useState<any[]>([]);
-
+// TODO interface
   console.log(fav);
   const addToFavorites = (id: string): void => {
     let isAlreadyFav = fav.filter((item) => item.value === id);

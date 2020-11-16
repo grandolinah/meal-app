@@ -23,6 +23,7 @@ const CategorieMealsScreen = ({ navigation }) => {
     );
   };
 
+  // TODO interface
   return (
     <View style={styles.screen}>
       <FlatList
