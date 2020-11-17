@@ -17,38 +17,39 @@ import { COLORS } from '../config/colors';
 
 const STORAGE_KEY_FAVORITES = '@favorites';
 
-// TODO !!!repeat code
-// TODO interfaces
-type FavoritesNavigationParamList = {
-  MealDetail: {
-    item: {
-      title: string;
-      id: string;
-      icon: string;
-    };
-  };
-  Favorites: {};
-};
+// TODO !!! repeat code
+// TODO options type error
 
-type MealNavigationParamList = {
-  CategoryMeals: {
-    title: string;
-  };
-  Categories: {};
-  MealDetail: {
-    item: {
-      title: string;
-      id: string;
-      icon: string;
-    };
-  };
-};
+import {FavoritesNavigationParamList, MealNavigationParamList} from '../interfaces/navigation-types';
 
-const storeData = async (array, key) => {
+const storeData = async (array: any[], key: string) => {
   try {
     await AsyncStorage.setItem(key, JSON.stringify(array));
   } catch (error) {
     // Error saving data
+  }
+};
+
+const favoriteButtonOptions = (id: string, title: string, toggleFavorite: (id: string) => void) => {
+  return {
+    headerTitle: title,
+    headerTitleAlign: 'center',
+    headerRight: () => (
+      <CustomIconButton onPressed={() => toggleFavorite(id)}icon="ios-star" />
+    ),
+  }
+};
+
+const drawerButtonOptions = (navigation: any) => {
+  return {
+    headerLeft: () => (
+      <CustomIconButton
+        icon="ios-menu"
+        onPressed={() => {
+          navigation.toggleDrawer();
+        }}
+      />
+    ),
   }
 };
 
@@ -92,7 +93,7 @@ const MealNavigation = ({ navigation }) => {
     }
   };
 
-  const removeItem = async (key: any) => {
+  const removeItem = async (key: string) => {
     try {
       await AsyncStorage.removeItem(key);
 
@@ -129,16 +130,7 @@ const MealNavigation = ({ navigation }) => {
       <MealStack.Screen
         name="Categories"
         component={CategoriesScreen}
-        options={() => ({
-          headerLeft: () => (
-            <CustomIconButton
-              icon="ios-menu"
-              onPressed={() => {
-                navigation.toggleDrawer();
-              }}
-            />
-          ),
-        })}
+        options={({ navigation }) => drawerButtonOptions(navigation)}
       />
       <MealStack.Screen
         name="CategoryMeals"
@@ -151,13 +143,7 @@ const MealNavigation = ({ navigation }) => {
       <MealStack.Screen
         name="MealDetail"
         component={MealDetailScreen}
-        options={({ route }) => ({
-          headerTitle: route.params.item.title,
-          headerTitleAlign: 'center',
-          headerRight: () => (
-            <CustomIconButton onPressed={() => {}} icon="ios-star" />
-          ),
-        })}
+        options={({ route }) => favoriteButtonOptions(route.params.item.id, route.params.item.title, toggleFavorite)}
       />
     </MealStack.Navigator>
   );
@@ -167,9 +153,8 @@ const FavoritesStack = createStackNavigator<FavoritesNavigationParamList>();
 
 const FavoritesNavigation = ({ navigation }) => {
   const [fav, setFav] = useState<any[]>([]);
-  // TODO interface and icon
 
-  const toggleFavorit = (id: string): void => {
+  const toggleFavorite = (id: string): void => {
     let isAlreadyFav = fav.filter((item) => item.value === id);
 
     if (isAlreadyFav.length === 0) {
@@ -240,32 +225,12 @@ const FavoritesNavigation = ({ navigation }) => {
       <FavoritesStack.Screen
         name="Favorites"
         component={FavoritesScreen}
-        options={() => ({
-          headerLeft: () => (
-            <CustomIconButton
-              icon="ios-menu"
-              onPressed={() => {
-                navigation.toggleDrawer();
-              }}
-            />
-          ),
-        })}
+        options={({ navigation }) => drawerButtonOptions(navigation)}
       />
       <FavoritesStack.Screen
         name="MealDetail"
         component={MealDetailScreen}
-        options={({ route }) => ({
-          headerTitle: route.params.item.title,
-          headerTitleAlign: 'center',
-          headerRight: () => (
-            <CustomIconButton
-              onPressed={() => {
-                toggleFavorit(route.params.item.id);
-              }}
-              icon="ios-star"
-            />
-          ),
-        })}
+        options={({ route }) => favoriteButtonOptions(route.params.item.id, route.params.item.title, toggleFavorite)}
       />
     </FavoritesStack.Navigator>
   );
