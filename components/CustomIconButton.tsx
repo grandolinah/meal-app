@@ -4,8 +4,6 @@ import { View, StyleSheet, TouchableOpacity, Platform, ViewStyle } from 'react-n
 
 import { COLORS } from '../config/colors';
 
-import { centerAlignedContent } from '../styles/align-center';
-
 import { CustomIconButtonInterface } from '../interfaces/components-interface';
 
 import { centerAlignedContent } from '../styles/align-center';
