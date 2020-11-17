@@ -6,4 +6,5 @@ export const COLORS: Colors = {
   white: '#FFF',
   wildSand: '#F5F5F5',
   ash: '#C6C3B5',
+  transparent: 'rgba(0, 0, 0, 0.5)',
 };

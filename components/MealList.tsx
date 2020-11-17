@@ -1,9 +1,11 @@
 import React from 'react';
-import { View, StyleSheet, FlatList } from 'react-native';
+import { View, StyleSheet, FlatList, ViewStyle } from 'react-native';
 
 import { MealInterface } from '../interfaces/meal-interface';
 
 import MealItem from './MealItem';
+
+import { centerAlignedContent } from '../styles/align-center';
 
 const MealList = ({ navigation, list}) => {
   const renderMealItem = ({ item }) => {
@@ -39,10 +41,8 @@ const MealList = ({ navigation, list}) => {
 
 const styles = StyleSheet.create({
   list: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
+  ...centerAlignedContent,
+  } as ViewStyle,
   container: {
     width: '100%',
   },
