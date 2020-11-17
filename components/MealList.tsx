@@ -1,6 +1,8 @@
 import React from 'react';
 import { View, StyleSheet, FlatList } from 'react-native';
 
+import { MealInterface } from '../interfaces/meal-interface';
+
 import MealItem from './MealItem';
 
 const MealList = ({ navigation, list}) => {
@@ -27,7 +29,7 @@ const MealList = ({ navigation, list}) => {
     <View style={styles.list}>
       <FlatList
         data={list}
-        keyExtractor={(item: any) => item.id} // TODO interface
+        keyExtractor={(item: MealInterface) => item.id}
         renderItem={renderMealItem}
         style={styles.container}
       />

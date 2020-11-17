@@ -8,8 +8,13 @@ import MealNavigation from './MealNavigation';
 import FavoritesNavigation from '../navigation/FavoritesNavigation';
 
 import { COLORS } from '../config/colors';
+let Tab;
 
-const Tab = Platform.OS === 'android' ? createMaterialBottomTabNavigator() : createBottomTabNavigator();
+if (Platform.OS === 'android') {
+  Tab = createMaterialBottomTabNavigator();
+} else {
+  Tab = createBottomTabNavigator();
+}
 
 const screenOptions = ({ route }) => ({
   tabBarIcon: ({ focused, color, size }) => {
