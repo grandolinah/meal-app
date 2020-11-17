@@ -3,8 +3,16 @@ import { Text, StyleSheet } from 'react-native';
 
 import { DefaultTextInterface } from '../interfaces/components-interface';
 
-const DefaultBoldText = ({ style, children }: DefaultTextInterface) => {
-  return <Text style={{ ...style, ...styles.text }}>{children}</Text>;
+const DefaultBoldText = ({
+  style,
+  children,
+  numberOfLines,
+}: DefaultTextInterface) => {
+  return (
+    <Text style={{ ...style, ...styles.text }} numberOfLines={numberOfLines}>
+      {children}
+    </Text>
+  );
 };
 
 const styles = StyleSheet.create({

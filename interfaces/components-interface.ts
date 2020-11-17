@@ -6,6 +6,7 @@ export interface CustomIconButtonInterface {
 export interface DefaultTextInterface {
   style?: any;
   children?: any;
+  numberOfLines?: number;
 }
 
 export interface FilterSwitchInterface {

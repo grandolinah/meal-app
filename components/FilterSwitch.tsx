@@ -18,7 +18,7 @@ const FilterSwitch = ({
       <Switch
         value={value}
         onValueChange={(newValue) => onValueChange(newValue)}
-        trackColor={{ true: COLORS.violetRed }}
+        trackColor={{ false: COLORS.ash, true: COLORS.violetRed }}
         thumbColor={Platform.OS === 'android' ? COLORS.violetRed : ''}
       />
     </View>

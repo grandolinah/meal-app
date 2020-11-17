@@ -16,7 +16,7 @@ const CategoryGridItem = ({
   color,
   title,
 }: CategoryGridItemPropsInterface) => {
-  let TouchableComponent: any; // TODO interface
+  let TouchableComponent;
 
   if (Platform.OS === 'android' && Platform.Version >= 21) {
     TouchableComponent = TouchableNativeFeedback;
