@@ -20,7 +20,7 @@ const mealReducer = (state = initialState, action) => {
 
         return {...state, favoriteMeals: updatedFavMeals};
       } else {
-        const meal = state.favoriteMeals.find(meal => meal.id === action.mealId);
+        const meal = state.meals.find((meal) => meal.id === action.mealId);
 
         return {...state, favoriteMeals: state.favoriteMeals.concat(meal)};
       }
