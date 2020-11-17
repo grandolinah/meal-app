@@ -1,10 +1,12 @@
 import React from 'react';
-import { View, StyleSheet, ScrollView, Image } from 'react-native';
+import { View, StyleSheet, ScrollView, Image, ViewStyle } from 'react-native';
 
 import DefaultText from '../components/DefaultText';
 import DefaultBoldText from '../components/DefaultBoldText';
 
 import { COLORS } from '../config/colors';
+
+import { centerAlignedContent } from '../styles/align-center';
 
 const MealDetailScreen = ({ route }) => {
   const item = route.params.item;
@@ -37,10 +39,8 @@ const MealDetailScreen = ({ route }) => {
 
 const styles = StyleSheet.create({
   screen: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
+    ...centerAlignedContent,
+  } as ViewStyle,
   image: {
     width: '100%',
     height: 200,

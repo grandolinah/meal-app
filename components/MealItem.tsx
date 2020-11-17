@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
     height: '85%',
   },
   titleContainer: {
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    backgroundColor: COLORS.transparent,
   },
   title: {
     color: COLORS.white,
