@@ -6,6 +6,8 @@ import DefaultBoldText from '../components/DefaultBoldText';
 
 import { COLORS } from '../config/colors';
 
+import { centerAlignedContent } from '../styles/align-center';
+
 const MealDetailScreen = ({ route }) => {
   const item = route.params.item;
 
@@ -37,9 +39,7 @@ const MealDetailScreen = ({ route }) => {
 
 const styles = StyleSheet.create({
   screen: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    ...centerAlignedContent,
   },
   image: {
     width: '100%',

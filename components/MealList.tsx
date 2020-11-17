@@ -5,6 +5,8 @@ import MealItem from './MealItem';
 
 import { MealInterface } from '../interfaces/meal-interface';
 
+import { centerAlignedContent } from '../styles/align-center';
+
 const MealList = ({ navigation, list }) => {
   const renderMealItem = ({ item }) => {
     return (
@@ -41,9 +43,7 @@ const MealList = ({ navigation, list }) => {
 
 const styles = StyleSheet.create({
   list: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    ...centerAlignedContent,
   },
   container: {
     width: '100%',

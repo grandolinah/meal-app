@@ -111,9 +111,9 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   title: {
-    fontSize: 22,
     margin: 20,
     textAlign: 'center',
+    fontSize: 22,
   },
 });
 

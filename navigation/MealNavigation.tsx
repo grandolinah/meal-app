@@ -28,19 +28,19 @@ type MealNavigationParamList = {
 
 const Stack = createStackNavigator<MealNavigationParamList>();
 
-const MealNavigation = ({ route, navigation }) => {
+const MealNavigation = ({ navigation }) => {
   const [fav, setFav] = useState<any[]>([]);
-// TODO interface
-  console.log(fav);
+  // TODO interface
+
   const addToFavorites = (id: string): void => {
     let isAlreadyFav = fav.filter((item) => item.value === id);
 
-    console.log(isAlreadyFav);
     if (isAlreadyFav.length === 0) {
       setFav((currentFavs: any[]) => [
         ...currentFavs,
         { id: Math.random().toString(), value: id },
       ]);
+      Alert.alert('Added to favorite meals', 'Added to  favorite meals');
     } else {
       removeFav(id);
     }

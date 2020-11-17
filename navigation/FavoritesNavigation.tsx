@@ -10,7 +10,7 @@ import CustomIconButton from '../components/CustomIconButton';
 import { COLORS } from '../config/colors';
 
 type FavoritesNavigationParamList = {
-  MealDetail: { 
+  MealDetail: {
     item: {
       title: string;
       id: string;
@@ -61,9 +61,7 @@ const FavoritesNavigation = ({ navigation }) => {
           headerRight: () => (
             <CustomIconButton
               onPressed={() => {
-                console.log(route.params.item.id)
-                // addToFavorites(route.params.item.id);
-                // TODO
+                // TODO change icon
               }}
               icon="ios-star"
             />

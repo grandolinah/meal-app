@@ -38,9 +38,9 @@ const CategorieMealsScreen = ({ navigation }) => {
 
 const styles = StyleSheet.create({
   screen: {
-    paddingTop: 22,
     flex: 1,
     justifyContent: 'center',
+    paddingTop: 22,
   },
 });
 

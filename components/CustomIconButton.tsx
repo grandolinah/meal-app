@@ -4,6 +4,8 @@ import { View, StyleSheet, TouchableOpacity, Platform } from 'react-native';
 
 import { COLORS } from '../config/colors';
 
+import { centerAlignedContent } from '../styles/align-center';
+
 import { CustomIconButtonInterface } from '../interfaces/components-interface';
 
 const CustomIconButton = ({ onPressed, icon }: CustomIconButtonInterface) => {
@@ -25,9 +27,7 @@ const CustomIconButton = ({ onPressed, icon }: CustomIconButtonInterface) => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    ...centerAlignedContent,
     marginHorizontal: 10,
   },
 });
