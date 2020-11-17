@@ -24,7 +24,7 @@ const MealItem = ({
   return (
     <View style={styles.mealItem}>
       <TouchableOpacity onPress={onSelectMeal}>
-        <View style={styles.container}>
+        <View>
           <View style={{ ...styles.row, ...styles.mealHeader }}>
             <ImageBackground source={{ uri: image }} style={styles.bgImage}>
               <View style={styles.titleContainer}>
@@ -54,7 +54,6 @@ const styles = StyleSheet.create({
     marginVertical: 10,
     elevation: 5,
   },
-  container: {},
   row: {
     flexDirection: 'row',
   },

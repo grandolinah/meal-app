@@ -9,7 +9,17 @@ import CustomIconButton from '../components/CustomIconButton';
 
 import { COLORS } from '../config/colors';
 
-const Stack = createStackNavigator();
+type FavoritesNavigationParamList = {
+  MealDetail: { 
+    item: {
+      title: string;
+      id: string;
+    }
+  };
+  Favorites: {}
+};
+
+const Stack = createStackNavigator<FavoritesNavigationParamList>();
 
 // TODO types
 const FavoritesNavigation = ({ navigation }) => {
