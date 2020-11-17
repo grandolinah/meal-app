@@ -1,12 +1,14 @@
 import React from 'react';
 import Icon from 'react-native-vector-icons/Ionicons';
-import { View, StyleSheet, TouchableOpacity, Platform } from 'react-native';
+import { View, StyleSheet, TouchableOpacity, Platform, ViewStyle } from 'react-native';
 
 import { COLORS } from '../config/colors';
 
 import { centerAlignedContent } from '../styles/align-center';
 
 import { CustomIconButtonInterface } from '../interfaces/components-interface';
+
+import { centerAlignedContent } from '../styles/align-center';
 
 const CustomIconButton = ({ onPressed, icon }: CustomIconButtonInterface) => {
   return (
@@ -29,7 +31,7 @@ const styles = StyleSheet.create({
   container: {
     ...centerAlignedContent,
     marginHorizontal: 10,
-  },
+  } as ViewStyle,
 });
 
 export default CustomIconButton;

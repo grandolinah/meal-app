@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet, ScrollView, Image } from 'react-native';
+import { View, StyleSheet, ScrollView, Image, ViewStyle } from 'react-native';
 
 import DefaultText from '../components/DefaultText';
 import DefaultBoldText from '../components/DefaultBoldText';
@@ -40,7 +40,7 @@ const MealDetailScreen = ({ route }) => {
 const styles = StyleSheet.create({
   screen: {
     ...centerAlignedContent,
-  },
+  } as ViewStyle,
   image: {
     width: '100%',
     height: 200,
