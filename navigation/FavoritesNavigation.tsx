@@ -10,7 +10,7 @@ import CustomIconButton from '../components/CustomIconButton';
 import { COLORS } from '../config/colors';
 
 type FavoritesNavigationParamList = {
-  MealDetail: { 
+  MealDetail: {
     item: {
       title: string;
       id: string;
