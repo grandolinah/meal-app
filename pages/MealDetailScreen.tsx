@@ -11,12 +11,12 @@ import { centerAlignedContent } from '../styles/align-center';
 const MealDetailScreen = ({ route }) => {
   const item = route.params.item;
 
-  const ListItem = ({ style, children}) => {
+  const ListItem = ({ style, children }) => {
     return (
       <View style={{ ...style }}>
         <DefaultText>{children}</DefaultText>
       </View>
-    )
+    );
   };
 
   return (
@@ -29,9 +29,17 @@ const MealDetailScreen = ({ route }) => {
       </View>
       <View style={styles.lists}>
         <DefaultBoldText style={styles.title}>Ingredients</DefaultBoldText>
-        {item.ingredients.map(ingredient => <ListItem style={styles.listItem} key={ingredient}>{ingredient}</ListItem>)}
+        {item.ingredients.map((ingredient) => (
+          <ListItem style={styles.listItem} key={ingredient}>
+            {ingredient}
+          </ListItem>
+        ))}
         <DefaultBoldText style={styles.title}>Steps</DefaultBoldText>
-        {item.steps.map(step => <ListItem style={styles.listItem} key={step}>{step}</ListItem>)}
+        {item.steps.map((step) => (
+          <ListItem style={styles.listItem} key={step}>
+            {step}
+          </ListItem>
+        ))}
       </View>
     </ScrollView>
   );
@@ -64,7 +72,7 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     margin: 4,
     padding: 10,
-  }
+  },
 });
 
 export default MealDetailScreen;

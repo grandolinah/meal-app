@@ -7,17 +7,19 @@ import MealItem from './MealItem';
 
 import { centerAlignedContent } from '../styles/align-center';
 
-const MealList = ({ navigation, list}) => {
+const MealList = ({ navigation, list }) => {
   const renderMealItem = ({ item }) => {
     return (
       <MealItem
         data={item}
-        onSelectMeal={() => navigation.navigate('MealDetail', {
-          item: item,
-          params: {
-            title: item.title,
-          },
-        })}
+        onSelectMeal={() =>
+          navigation.navigate('MealDetail', {
+            item: item,
+            params: {
+              title: item.title,
+            },
+          })
+        }
         title={item.title}
         duration={item.duration}
         complexity={item.complexity}
@@ -41,7 +43,7 @@ const MealList = ({ navigation, list}) => {
 
 const styles = StyleSheet.create({
   list: {
-  ...centerAlignedContent,
+    ...centerAlignedContent,
   } as ViewStyle,
   container: {
     width: '100%',
