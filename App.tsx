@@ -8,7 +8,10 @@ import DrawerNavigation from './navigation/DrawerNavigation';
 
 import AppContext from './AppContext';
 
-import { FavoritesItemInterface, FilterInterface } from './interfaces/context-interface';
+import {
+  FavoritesItemInterface,
+  FilterInterface,
+} from './interfaces/context-interface';
 
 const STORAGE_KEY_FAVORITES = '@save_favorites';
 const STORAGE_KEY_IS_GLUTEN_FREE = '@save_filter_gluten';
@@ -44,7 +47,7 @@ const App: () => React.ReactNode = () => {
           isGlutenFree: gluten === 'true' ? true : false,
           isLactoseFree: lactose === 'true' ? true : false,
           isVegan: vegan === 'true' ? true : false,
-          isVegetarian: vegetarian === 'true' ? true : false
+          isVegetarian: vegetarian === 'true' ? true : false,
         });
       }
     } catch (error) {
@@ -54,7 +57,10 @@ const App: () => React.ReactNode = () => {
 
   const storeData = async () => {
     try {
-      await AsyncStorage.setItem(STORAGE_KEY_FAVORITES, JSON.stringify(favorites));
+      await AsyncStorage.setItem(
+        STORAGE_KEY_FAVORITES,
+        JSON.stringify(favorites),
+      );
 
       await AsyncStorage.setItem(
         STORAGE_KEY_IS_GLUTEN_FREE,
@@ -64,7 +70,10 @@ const App: () => React.ReactNode = () => {
         STORAGE_KEY_IS_LACTOSE_FREE,
         JSON.stringify(filter.isLactoseFree),
       );
-      await AsyncStorage.setItem(STORAGE_KEY_IS_VEGAN, JSON.stringify(filter.isVegan));
+      await AsyncStorage.setItem(
+        STORAGE_KEY_IS_VEGAN,
+        JSON.stringify(filter.isVegan),
+      );
       await AsyncStorage.setItem(
         STORAGE_KEY_IS_VEGETARIAN,
         JSON.stringify(filter.isVegetarian),
@@ -78,7 +87,13 @@ const App: () => React.ReactNode = () => {
     if (isDataRead) {
       storeData();
     }
-  }, [favorites, filter.isGlutenFree, filter.isLactoseFree, filter.isVegan, filter.isVegetarian]);
+  }, [
+    favorites,
+    filter.isGlutenFree,
+    filter.isLactoseFree,
+    filter.isVegan,
+    filter.isVegetarian,
+  ]);
 
   useEffect(() => {
     if (!isDataRead) {
@@ -90,7 +105,8 @@ const App: () => React.ReactNode = () => {
   return (
     <>
       <StatusBar barStyle="dark-content" />
-      <AppContext.Provider value={{ favorites, setFavorites, filter, setFilter }}>
+      <AppContext.Provider
+        value={{ favorites, setFavorites, filter, setFilter }}>
         <NavigationContainer>
           <DrawerNavigation />
         </NavigationContainer>

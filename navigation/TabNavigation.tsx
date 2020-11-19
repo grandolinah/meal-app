@@ -107,7 +107,11 @@ const MealNavigation = () => {
               onPressed={() => {
                 toggleFavorite(route.params.item.id);
               }}
-              icon={checkIfFavorite(route.params.item.id) ? 'ios-star' : 'ios-star-outline'}
+              icon={
+                checkIfFavorite(route.params.item.id)
+                  ? 'ios-star'
+                  : 'ios-star-outline'
+              }
             />
           ),
         })}

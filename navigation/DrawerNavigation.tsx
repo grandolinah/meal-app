@@ -33,7 +33,11 @@ const DrawerNavigation = () => {
         component={TabNavigation}
         options={{ headerShown: false }}
       />
-      <Drawer.Screen name="Filter" component={FilterScreen} options={{ headerShown: true }}/>
+      <Drawer.Screen
+        name="Filter"
+        component={FilterScreen}
+        options={{ headerShown: true }}
+      />
     </Drawer.Navigator>
   );
 };
