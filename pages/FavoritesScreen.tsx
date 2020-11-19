@@ -6,12 +6,12 @@ import { MEALS } from '../data/dummy-data';
 import MealList from '../components/MealList';
 import DefaultText from '../components/DefaultText';
 
-import FavoritesContext from '../FavoritesContext';
+import AppContext from '../AppContext';
 
 import { centerAlignedContent } from '../styles/align-center';
 
 const FavoritesScreen = ({ navigation }) => {
-  const { favorites, setFavorites } = useContext(FavoritesContext);
+  const { favorites } = useContext(AppContext);
   const [list, setList] = useState([]);
 
   useEffect(() => {

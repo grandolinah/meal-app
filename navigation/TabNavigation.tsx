@@ -10,7 +10,7 @@ import MealDetailScreen from '../pages/MealDetailScreen';
 import CategoriesScreen from '../pages/CategoriesScreen';
 import CategoryMealsScreen from '../pages/CategoryMealsScreen';
 
-import FavoritesContext from '../FavoritesContext';
+import AppContext from '../AppContext';
 
 import CustomIconButton from '../components/CustomIconButton';
 
@@ -37,7 +37,7 @@ const drawerButtonOptions = (navigation: any) => {
 const MealStack = createStackNavigator<MealNavigationParamList>();
 
 const MealNavigation = () => {
-  const { favorites, setFavorites } = useContext(FavoritesContext);
+  const { favorites, setFavorites } = useContext(AppContext);
 
   const toggleFavorite = (id: string): void => {
     let isAlreadyFav = favorites.filter((item) => item.value === id);
@@ -113,7 +113,7 @@ const MealNavigation = () => {
 const FavoritesStack = createStackNavigator<FavoritesNavigationParamList>();
 
 const FavoritesNavigation = () => {
-  const { favorites, setFavorites } = useContext(FavoritesContext);
+  const { setFavorites } = useContext(AppContext);
 
   const removeFavorite = (id: string): void => {
     setFavorites((currentFavs: any[]) => {
