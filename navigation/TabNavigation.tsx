@@ -145,13 +145,15 @@ const FavoritesNavigation = () => {
       <FavoritesStack.Screen
         name="MealDetail"
         component={MealDetailScreen}
-        options={({ route }) => ({
+        options={({ route, navigation }) => ({
           headerTitle: route.params.item.title,
           headerTitleAlign: 'center',
           headerRight: () => (
             <CustomIconButton
               onPressed={() => {
                 removeFavorite(route.params.item.id);
+
+                navigation.navigate('Favorites');
               }}
               icon="ios-trash"
             />
