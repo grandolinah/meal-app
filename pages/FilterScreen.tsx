@@ -1,6 +1,8 @@
 import React, { useContext } from 'react';
 import { View, StyleSheet } from 'react-native';
 
+import I18n from "../locale/i18n";
+
 import DefaultBoldText from '../components/DefaultBoldText';
 import FilterSwitch from '../components/FilterSwitch';
 
@@ -11,7 +13,7 @@ const FilterScreen = () => {
 
   return (
     <View style={styles.screen}>
-      <DefaultBoldText style={styles.title}>Available filters:</DefaultBoldText>
+      <DefaultBoldText style={styles.title}>{I18n.t('FilterScreen.title')}</DefaultBoldText>
       <FilterSwitch
         title="Gluten-free"
         value={filter.isGlutenFree}
