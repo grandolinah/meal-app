@@ -13,6 +13,7 @@ const rootReducer = combineReducers({
 });
 
 const store = createStore(rootReducer);
+// TODO save the store with async storage
 
 const App: () => React.ReactNode = () => {
   return (

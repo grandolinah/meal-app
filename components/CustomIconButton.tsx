@@ -1,6 +1,12 @@
 import React from 'react';
 import Icon from 'react-native-vector-icons/Ionicons';
-import { View, StyleSheet, TouchableOpacity, Platform, ViewStyle } from 'react-native';
+import {
+  View,
+  StyleSheet,
+  TouchableOpacity,
+  Platform,
+  ViewStyle,
+} from 'react-native';
 
 import { COLORS } from '../config/colors';
 

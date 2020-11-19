@@ -32,14 +32,14 @@ const CategorieMealsScreen = ({ navigation }) => {
         keyExtractor={(item: any) => item.id}
       />
     </View>
-  )
+  );
 };
 
 const styles = StyleSheet.create({
   screen: {
-    paddingTop: 22,
     flex: 1,
     justifyContent: 'center',
+    paddingTop: 22,
   },
 });
 
