@@ -13,9 +13,9 @@ const Drawer = createDrawerNavigator();
 const DrawerNavigation = () => {
   return (
     <Drawer.Navigator
-      initialRouteName="Home"
+      initialRouteName="Back"
       screenOptions={{
-        headerTitle: 'Favorites',
+        headerTitle: 'Filters',
         headerTitleStyle: {
           color: COLORS.white,
           fontFamily: 'Montserrat-Bold',
@@ -29,11 +29,11 @@ const DrawerNavigation = () => {
           Platform.OS === 'android' ? COLORS.white : COLORS.pinkLace,
       }}>
       <Drawer.Screen
-        name="Home"
+        name="Back"
         component={TabNavigation}
         options={{ headerShown: false }}
       />
-      <Drawer.Screen name="Filter" component={FilterScreen} />
+      <Drawer.Screen name="Filter" component={FilterScreen} options={{ headerShown: true }}/>
     </Drawer.Navigator>
   );
 };
