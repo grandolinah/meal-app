@@ -23,7 +23,6 @@ const CategorieMealsScreen = ({ navigation }) => {
     );
   };
 
-  // TODO interface
   return (
     <View style={styles.screen}>
       <FlatList
@@ -33,7 +32,7 @@ const CategorieMealsScreen = ({ navigation }) => {
         keyExtractor={(item: any) => item.id}
       />
     </View>
-  )
+  );
 };
 
 const styles = StyleSheet.create({

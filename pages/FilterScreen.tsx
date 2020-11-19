@@ -39,12 +39,14 @@ const FilterScreen = () => {
       <FilterSwitch
         title="Vegan"
         value={filter.isVegan}
-        onValueChange={(newValue: boolean) => setFilter({
-          isGlutenFree: filter.isGlutenFree,
-          isLactoseFree: filter.isLactoseFree,
-          isVegan: newValue,
-          isVegetarian: filter.isVegetarian,
-        })}
+        onValueChange={(newValue: boolean) =>
+          setFilter({
+            isGlutenFree: filter.isGlutenFree,
+            isLactoseFree: filter.isLactoseFree,
+            isVegan: newValue,
+            isVegetarian: filter.isVegetarian,
+          })
+        }
       />
       <FilterSwitch
         title="Vegetarian"
