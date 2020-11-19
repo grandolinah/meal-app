@@ -1,44 +1,25 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext } from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { Platform, Text, Alert } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import FavoritesScreen from '../pages/FavoritesScreen';
 import MealDetailScreen from '../pages/MealDetailScreen';
 import CategoriesScreen from '../pages/CategoriesScreen';
 import CategoryMealsScreen from '../pages/CategoryMealsScreen';
 
+import FavoritesContext from '../FavoritesContext';
+
 import CustomIconButton from '../components/CustomIconButton';
 
 import { COLORS } from '../config/colors';
 
-const STORAGE_KEY_FAVORITES = '@favorites';
-
-// TODO !!! repeat code
-// TODO options type error
-
-import {FavoritesNavigationParamList, MealNavigationParamList} from '../interfaces/navigation-types';
-
-const storeData = async (array: any[], key: string) => {
-  try {
-    await AsyncStorage.setItem(key, JSON.stringify(array));
-  } catch (error) {
-    // Error saving data
-  }
-};
-
-const favoriteButtonOptions = (id: string, title: string, toggleFavorite: (id: string) => void) => {
-  return {
-    headerTitle: title,
-    headerTitleAlign: 'center',
-    headerRight: () => (
-      <CustomIconButton onPressed={() => toggleFavorite(id)}icon="ios-star" />
-    ),
-  }
-};
+import {
+  FavoritesNavigationParamList,
+  MealNavigationParamList,
+} from '../interfaces/navigation-types';
 
 const drawerButtonOptions = (navigation: any) => {
   return {
@@ -50,66 +31,35 @@ const drawerButtonOptions = (navigation: any) => {
         }}
       />
     ),
-  }
+  };
 };
 
 const MealStack = createStackNavigator<MealNavigationParamList>();
 
-const MealNavigation = ({ navigation }) => {
-  const [fav, setFav] = useState<any[]>([]);
-  // TODO interface and icon
+const MealNavigation = () => {
+  const { favorites, setFavorites } = useContext(FavoritesContext);
 
   const toggleFavorite = (id: string): void => {
-    let isAlreadyFav = fav.filter((item) => item.value === id);
+    let isAlreadyFav = favorites.filter((item) => item.value === id);
 
     if (isAlreadyFav.length === 0) {
-      setFav((currentFavs: any[]) => [
+      setFavorites((currentFavs: any) => [
         ...currentFavs,
         { id: Math.random().toString(), value: id },
       ]);
-      Alert.alert('Added to favorite meals', 'Added to  favorite meals');
+
+      Alert.alert('Added to favorite meals', 'Added to favorite meals');
     } else {
       removeFav(id);
+      Alert.alert('Removed from favorite meals', 'Removed from favorite meals');
     }
   };
 
   const removeFav = (id: string): void => {
-    setFav((currentFavs: any[]) => {
+    setFavorites((currentFavs: any) => {
       return currentFavs.filter((item) => item.value !== id);
     });
-
-    removeItem(id);
   };
-
-  const getFavoritesIds = async () => {
-    try {
-      const array = await AsyncStorage.getItem(STORAGE_KEY_FAVORITES);
-
-      if (array !== null) {
-        setFav(JSON.parse(array));
-      }
-    } catch (error) {
-      // Error retrieving data
-    }
-  };
-
-  const removeItem = async (key: string) => {
-    try {
-      await AsyncStorage.removeItem(key);
-
-      Alert.alert('Removed from favorite meals', 'Removed from favorite meals');
-    } catch (error) {
-      Alert.alert('Error', 'The app was unable to remove from favorites.');
-    }
-  };
-
-  useEffect(() => {
-    getFavoritesIds();
-  });
-
-  useEffect(() => {
-    storeData(fav, STORAGE_KEY_FAVORITES);
-  }, [fav]);
 
   return (
     <MealStack.Navigator
@@ -143,7 +93,18 @@ const MealNavigation = ({ navigation }) => {
       <MealStack.Screen
         name="MealDetail"
         component={MealDetailScreen}
-        options={({ route }) => favoriteButtonOptions(route.params.item.id, route.params.item.title, toggleFavorite)}
+        options={({ route }) => ({
+          headerTitle: route.params.item.title,
+          headerTitleAlign: 'center',
+          headerRight: () => (
+            <CustomIconButton
+              onPressed={() => {
+                toggleFavorite(route.params.item.id);
+              }}
+              icon="ios-star"
+            />
+          ),
+        })}
       />
     </MealStack.Navigator>
   );
@@ -151,60 +112,14 @@ const MealNavigation = ({ navigation }) => {
 
 const FavoritesStack = createStackNavigator<FavoritesNavigationParamList>();
 
-const FavoritesNavigation = ({ navigation }) => {
-  const [fav, setFav] = useState<any[]>([]);
+const FavoritesNavigation = () => {
+  const { favorites, setFavorites } = useContext(FavoritesContext);
 
-  const toggleFavorite = (id: string): void => {
-    let isAlreadyFav = fav.filter((item) => item.value === id);
-
-    if (isAlreadyFav.length === 0) {
-      setFav((currentFavs: any[]) => [
-        ...currentFavs,
-        { id: Math.random().toString(), value: id },
-      ]);
-      Alert.alert('Added to favorite meals', 'Added to  favorite meals');
-    } else {
-      removeFav(id);
-    }
-  };
-
-  const removeFav = (id: string): void => {
-    setFav((currentFavs: any[]) => {
+  const removeFavorite = (id: string): void => {
+    setFavorites((currentFavs: any[]) => {
       return currentFavs.filter((item) => item.value !== id);
     });
-
-    removeItem(id);
   };
-
-  const getFavoritesIds = async () => {
-    try {
-      const array = await AsyncStorage.getItem(STORAGE_KEY_FAVORITES);
-
-      if (array !== null) {
-        setFav(JSON.parse(array));
-      }
-    } catch (error) {
-      // Error retrieving data
-    }
-  };
-
-  const removeItem = async (key: any) => {
-    try {
-      await AsyncStorage.removeItem(key);
-
-      Alert.alert('Removed from favorite meals', 'Removed from favorite meals');
-    } catch (error) {
-      Alert.alert('Error', 'The app was unable to remove from favorites.');
-    }
-  };
-
-  useEffect(() => {
-    getFavoritesIds();
-  }, []);
-
-  useEffect(() => {
-    storeData(fav, STORAGE_KEY_FAVORITES);
-  }, [fav]);
 
   return (
     <FavoritesStack.Navigator
@@ -230,7 +145,18 @@ const FavoritesNavigation = ({ navigation }) => {
       <FavoritesStack.Screen
         name="MealDetail"
         component={MealDetailScreen}
-        options={({ route }) => favoriteButtonOptions(route.params.item.id, route.params.item.title, toggleFavorite)}
+        options={({ route }) => ({
+          headerTitle: route.params.item.title,
+          headerTitleAlign: 'center',
+          headerRight: () => (
+            <CustomIconButton
+              onPressed={() => {
+                removeFavorite(route.params.item.id);
+              }}
+              icon="ios-trash"
+            />
+          ),
+        })}
       />
     </FavoritesStack.Navigator>
   );
