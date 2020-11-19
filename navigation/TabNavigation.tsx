@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import Icon from 'react-native-vector-icons/Ionicons';
-import { Platform, Text, Alert } from 'react-native';
+import { Platform, Text } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
 
 import FavoritesScreen from '../pages/FavoritesScreen';
@@ -47,11 +47,8 @@ const MealNavigation = () => {
         ...currentFavs,
         { id: Math.random().toString(), value: id },
       ]);
-
-      Alert.alert('Added to favorite meals', 'Added to favorite meals');
     } else {
       removeFavorite(id);
-      Alert.alert('Removed from favorite meals', 'Removed from favorite meals');
     }
   };
 
