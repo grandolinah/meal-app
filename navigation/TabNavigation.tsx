@@ -40,9 +40,9 @@ const MealNavigation = () => {
   const { favorites, setFavorites } = useContext(AppContext);
 
   const toggleFavorite = (id: string): void => {
-    let isAlreadyFav = favorites.filter((item) => item.value === id);
+    const isAlreadyFavorite = favorites.filter((item) => item.value === id);
 
-    if (isAlreadyFav.length === 0) {
+    if (isAlreadyFavorite.length === 0) {
       setFavorites((currentFavs: any) => [
         ...currentFavs,
         { id: Math.random().toString(), value: id },
@@ -50,15 +50,21 @@ const MealNavigation = () => {
 
       Alert.alert('Added to favorite meals', 'Added to favorite meals');
     } else {
-      removeFav(id);
+      removeFavorite(id);
       Alert.alert('Removed from favorite meals', 'Removed from favorite meals');
     }
   };
 
-  const removeFav = (id: string): void => {
+  const removeFavorite = (id: string): void => {
     setFavorites((currentFavs: any) => {
       return currentFavs.filter((item) => item.value !== id);
     });
+  };
+
+  const checkIfFavorite = (id: string) => {
+    const isAlreadyFavorite = favorites.filter((item) => item.value === id);
+
+    return isAlreadyFavorite.length === 0 ? false : true;
   };
 
   return (
@@ -101,7 +107,7 @@ const MealNavigation = () => {
               onPressed={() => {
                 toggleFavorite(route.params.item.id);
               }}
-              icon="ios-star"
+              icon={checkIfFavorite(route.params.item.id) ? 'ios-star' : 'ios-star-outline'}
             />
           ),
         })}
