@@ -15,6 +15,8 @@ import CategoryMealsScreen from '../pages/CategoryMealsScreen';
 
 import CustomIconButton from '../components/CustomIconButton';
 
+import { AppStateInterface } from '../interfaces/store-interface';
+
 import { COLORS } from '../config/colors';
 
 import {
@@ -38,9 +40,9 @@ const drawerButtonOptions = (navigation: any) => {
 const MealStack = createStackNavigator<MealNavigationParamList>();
 
 const MealNavigation = () => {
-  const [icon, setIcon] = useState('ios-star-outline');
+  const [icon, setIcon] = useState<string>('ios-star-outline');
   const dispatch = useDispatch();
-  const favorites = useSelector((state) => state.meals.favoriteMeals);
+  const favorites = useSelector((state: AppStateInterface ) => state.meals.favoriteMeals);
   // TODO if its fav?
 
   return (

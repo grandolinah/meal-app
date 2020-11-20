@@ -4,8 +4,10 @@ import { useSelector } from 'react-redux';
 
 import MealList from '../components/MealList';
 
+import { AppStateInterface } from '../interfaces/store-interface';
+
 const CategoryMealsScreen = ({ route, navigation }) => {
-  const filter = useSelector((state) => state.meals.filters);
+  const filter = useSelector((state: AppStateInterface) => state.meals.filters);
 
   const categoryId = route.params?.categoryId ?? '';
 

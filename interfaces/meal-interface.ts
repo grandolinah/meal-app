@@ -1,6 +1,6 @@
 export interface MealItemPropsInterface {
   onSelectMeal(): void;
-  data: any; // TODO interface
+  data: any;
   image: string;
   title: string;
   duration: string;

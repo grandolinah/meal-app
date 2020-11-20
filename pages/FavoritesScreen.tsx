@@ -8,8 +8,12 @@ import DefaultText from '../components/DefaultText';
 
 import { centerAlignedContent } from '../styles/align-center';
 
+import { AppStateInterface } from '../interfaces/store-interface';
+
 const FavoritesScreen = ({ navigation }) => {
-  const favorites = useSelector((state) => state.meals.favoriteMeals);
+  const favorites = useSelector(
+    (state: AppStateInterface) => state.meals.favoriteMeals,
+  );
 
   if (favorites.length === 0) {
     return (

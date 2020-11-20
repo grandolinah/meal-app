@@ -8,8 +8,12 @@ import I18n from '../locale/i18n';
 import DefaultBoldText from '../components/DefaultBoldText';
 import FilterSwitch from '../components/FilterSwitch';
 
+import { AppStateInterface } from '../interfaces/store-interface';
+
 const FilterScreen = () => {
-  const filters = useSelector((state) => state.meals.filters);
+  const filters = useSelector(
+    (state: AppStateInterface) => state.meals.filters,
+  );
   const dispatch = useDispatch();
 
   const [isGlutenFree, setIsGlutenFree] = useState(filters.isGlutenFree);
