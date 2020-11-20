@@ -29,13 +29,13 @@ const MealDetailScreen = ({ route }) => {
       </View>
       <View style={styles.lists}>
         <DefaultBoldText style={styles.title}>Ingredients</DefaultBoldText>
-        {item.ingredients.map((ingredient) => (
+        {item.ingredients.map((ingredient: string) => (
           <ListItem style={styles.listItem} key={ingredient}>
             {ingredient}
           </ListItem>
         ))}
         <DefaultBoldText style={styles.title}>Steps</DefaultBoldText>
-        {item.steps.map((step) => (
+        {item.steps.map((step: string) => (
           <ListItem style={styles.listItem} key={step}>
             {step}
           </ListItem>
