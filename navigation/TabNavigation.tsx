@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -16,6 +16,7 @@ import CategoryMealsScreen from '../pages/CategoryMealsScreen';
 import CustomIconButton from '../components/CustomIconButton';
 
 import { AppStateInterface } from '../interfaces/store-interface';
+import { MealInterface } from '../interfaces/meal-interface';
 
 import { COLORS } from '../config/colors';
 
@@ -39,11 +40,27 @@ const drawerButtonOptions = (navigation: any) => {
 
 const MealStack = createStackNavigator<MealNavigationParamList>();
 
-const MealNavigation = () => {
-  const [icon, setIcon] = useState<string>('ios-star-outline');
+const MealNavigation = ({ route }) => {
+  const [icon, setIcon] = useState('ios-star-outline');
   const dispatch = useDispatch();
-  const favorites = useSelector((state: AppStateInterface ) => state.meals.favoriteMeals);
-  // TODO if its fav?
+  const favorites = useSelector(
+    (state: AppStateInterface) => state.meals.favoriteMeals,
+  );
+
+  const checkIfFavorite = (id: string, favorites: MealInterface[]) => {
+    const isFavorite = favorites.filter((meal) => meal.id === id);
+
+    setIcon(isFavorite.length === 0 ? 'ios-star-outline' : 'ios-star');
+  };
+
+  // TODO any other way?
+  useEffect(() => {
+    if (route.state) {
+      if (route.state.routes.length === 3) {
+        checkIfFavorite(route.state.routes[2].params.item.id, favorites);
+      }
+    }
+  }, [route.state]);
 
   return (
     <MealStack.Navigator
