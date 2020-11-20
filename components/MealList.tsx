@@ -1,13 +1,13 @@
 import React from 'react';
 import { View, StyleSheet, FlatList, ViewStyle } from 'react-native';
 
-import { MealInterface } from '../interfaces/meal-interface';
+import { MealInterface, MealListInterface } from '../interfaces/meal-interface';
 
 import MealItem from './MealItem';
 
 import { centerAlignedContent } from '../styles/align-center';
 
-const MealList = ({ navigation, list }) => {
+const MealList = ({ navigation, list } : MealListInterface) => {
   const renderMealItem = ({ item }) => {
     return (
       <MealItem

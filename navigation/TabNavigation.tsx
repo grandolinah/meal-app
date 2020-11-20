@@ -14,6 +14,8 @@ import AppContext from '../AppContext';
 
 import CustomIconButton from '../components/CustomIconButton';
 
+import { FavoritesItemInterface } from '../interfaces/context-interface';
+
 import { COLORS } from '../config/colors';
 
 import {
@@ -21,7 +23,7 @@ import {
   MealNavigationParamList,
 } from '../interfaces/navigation-types';
 
-const drawerButtonOptions = (navigation: any) => {
+const drawerButtonOptions = (navigation) => {
   return {
     headerLeft: () => (
       <CustomIconButton
@@ -43,7 +45,7 @@ const MealNavigation = () => {
     const isAlreadyFavorite = favorites.filter((item) => item.value === id);
 
     if (isAlreadyFavorite.length === 0) {
-      setFavorites((currentFavs: any) => [
+      setFavorites((currentFavs: FavoritesItemInterface[]) => [
         ...currentFavs,
         { id: Math.random().toString(), value: id },
       ]);
@@ -53,7 +55,7 @@ const MealNavigation = () => {
   };
 
   const removeFavorite = (id: string): void => {
-    setFavorites((currentFavs: any) => {
+    setFavorites((currentFavs: FavoritesItemInterface[]) => {
       return currentFavs.filter((item) => item.value !== id);
     });
   };
@@ -123,7 +125,7 @@ const FavoritesNavigation = () => {
   const { setFavorites } = useContext(AppContext);
 
   const removeFavorite = (id: string): void => {
-    setFavorites((currentFavs: any[]) => {
+    setFavorites((currentFavs: FavoritesItemInterface[]) => {
       return currentFavs.filter((item) => item.value !== id);
     });
   };

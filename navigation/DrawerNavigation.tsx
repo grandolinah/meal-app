@@ -2,6 +2,7 @@ import React from 'react';
 import {
   createDrawerNavigator,
   DrawerContentScrollView,
+  DrawerContentComponentProps
 } from '@react-navigation/drawer';
 import { Platform, TouchableOpacity, StyleSheet } from 'react-native';
 
@@ -16,7 +17,7 @@ import { COLORS } from '../config/colors';
 const Drawer = createDrawerNavigator();
 
 const DrawerNavigation = () => {
-  const CustomDrawerContent = (props: any) => {
+  const CustomDrawerContent = (props: DrawerContentComponentProps) => {
     return (
       <DrawerContentScrollView {...props}>
         <TouchableOpacity

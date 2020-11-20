@@ -11,7 +11,7 @@ export interface FilterInterface {
 }
 
 export type AppContextType = {
-  favorites: any[];
+  favorites: FavoritesItemInterface[];
   setFavorites: (favorites: any) => void;
   filter: {
     isGlutenFree: boolean;

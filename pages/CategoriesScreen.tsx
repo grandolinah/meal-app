@@ -2,10 +2,13 @@ import React from 'react';
 import { View, StyleSheet, FlatList } from 'react-native';
 
 import CategoryGridItem from '../components/CategoryGridItem';
+
+import { CategoryItemInterface } from '../interfaces/category-interface';
+
 import { CATEGORIES } from '../data/dummy-data';
 
 const CategorieMealsScreen = ({ navigation }) => {
-  const renderGridItem = ({ item }) => {
+  const renderGridItem = ({ item } : {item: CategoryItemInterface}) => {
     return (
       <CategoryGridItem
         title={item.title}
@@ -29,7 +32,7 @@ const CategorieMealsScreen = ({ navigation }) => {
         numColumns={2}
         data={CATEGORIES}
         renderItem={renderGridItem}
-        keyExtractor={(item: any) => item.id}
+        keyExtractor={(item: CategoryItemInterface) => item.id}
       />
     </View>
   );
